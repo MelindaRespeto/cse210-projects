@@ -7,6 +7,8 @@ class Program
         
         int magicNumber = 10; // The magic number
         int guess = 0;
+        Random randomGenerator = new Random();
+        int magicNumber = randomGenerator.Next(1, 101);
 
         Console.WriteLine("What is the magic number?.");
 
@@ -26,7 +28,7 @@ class Program
             }
             else
             {
-                Console.WriteLine(" You guessed it!");
+                Console.WriteLine("You guessed it!");
             }
         }
     }
