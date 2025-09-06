@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic; // Needed for List<T>
-using System.Linq;                // Needed for Sum, Average, Max
+using System.Collections.Generic; 
+using System.Linq;                
 
 class Program
 {
