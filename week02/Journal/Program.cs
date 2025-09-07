@@ -12,7 +12,7 @@ using System;
         job1._endYear = 2024;
 
         Job job2 = new Job();
-        job2._jobTitle = "Qaulity Assurance";
+        job2._jobTitle = "Quality Assurance";
         job2._company = "Astec Company";
         job2._startYear = 2019;
         job2._endYear = 2020;
