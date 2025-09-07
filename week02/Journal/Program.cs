@@ -1,7 +1,6 @@
 using System;
 
 class Program
-{
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the Journal Project.");
@@ -15,16 +14,12 @@ class Program
         job2._startYear = 2019;
         job2._endYear = 2020;
 
-        Console.WriteLine($"Job Title: {job1._jobTitle}");
-        Console.WriteLine($"Company: {job1._company}");
-        Console.WriteLine($"Start Year: {job1._startYear}");
-        Console.WriteLine($"End Year: {job1._endYear}");
-        Console.WriteLine($"Job Title: {job2._jobTitle}");
-        Console.WriteLine($"Company: {job2._company}");
-        Console.WriteLine($"Start Year: {job2._startYear}");
-        Console.WriteLine($"End Year: {job2._endYear}");
+    public void DisplayJobDetails()
+
+    {   Console.WriteLine($"{_jobTitle} ({_company}) {_startYear}-{_endYear}");
+        job1.DisplayJobDetails();
 
         
     }
     
-}
+    }
