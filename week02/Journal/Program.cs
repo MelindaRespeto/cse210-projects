@@ -18,6 +18,8 @@ class Program
 
     {   Console.WriteLine($"{_jobTitle} ({_company}) {_startYear}-{_endYear}");
         job1.DisplayJobDetails();
+        job2.DisplayJobDetails();
+
 
         
     }
