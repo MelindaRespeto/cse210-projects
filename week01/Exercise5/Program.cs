@@ -1,29 +1,20 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to the program!");
+        Console.WriteLine("Hello World! This is the Journal Project.");
 
-        
-        Console.Write("Please enter your name: ");
-        string name = Console.ReadLine();
-        Console.WriteLine($"Hello {name}");
+        Resume myResume = new Resume("Melinda");
 
-        
-        Console.Write("Please enter your favorite number: ");
-        string numberInput = Console.ReadLine();
+        Job job1 = new Job("Teacher Assistant", "Department of Education", 2022, 2024);
+        Job job2 = new Job("Quality Assurance", "Astec Company", 2019, 2020);
 
-        int favoriteNumber;
-        if (int.TryParse(numberInput, out favoriteNumber))
-        {
-            int square = favoriteNumber * favoriteNumber;
-            Console.WriteLine($"{name}, the square of your number is {square}");
-        }
-        else
-        {
-            Console.WriteLine("Invalid number entered. Please enter a valid integer.");
-        }
+        myResume.AddJob(job1);
+        myResume.AddJob(job2);
+
+        myResume.DisplayResume();
     }
 }

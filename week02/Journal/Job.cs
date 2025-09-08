@@ -1,27 +1,5 @@
 using System;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello World! This is My Journal Project.");
-
-        Job job1 = new Job();
-        job1._jobTitle = "Teacher Assistant";
-        job1._company = "Department of Education";
-        job1._startYear = 2022;
-        job1._endYear = 2024;
-
-        Job job2 = new Job(); job2._jobTitle = "Quality Assurance";
-        job2._company = "Astec Company"; 
-        job2._startYear = 2019; 
-        job2._endYear = 2020;
-
-        job1.Display();
-        job2.Display
-    }
-}
-
 public class Job
 {
     public string _jobTitle;
@@ -29,9 +7,47 @@ public class Job
     public int _startYear;
     public int _endYear;
 
-    // Method to display the job details
+    public Job(string jobTitle, string company, int startYear, int endYear)
+    {
+        _jobTitle = jobTitle;
+        _company = company;
+        _startYear = startYear;
+        _endYear = endYear;
+    }
+
     public void Display()
     {
-        Console.WriteLine($"{_jobTitle} ({_company}) {_startYear}-{_endYear}");
+        Console.WriteLine($"{_jobTitle} at {_company} ({_startYear} - {_endYear})");
+    }
+}
+Resume.cs:
+
+csharp
+Copy code
+using System;
+using System.Collections.Generic;
+
+public class Resume
+{
+    public string Name { get; set; }
+    public List<Job> Jobs { get; } = new List<Job>();
+
+    public Resume(string name)
+    {
+        Name = name;
+    }
+
+    public void AddJob(Job job)
+    {
+        Jobs.Add(job);
+    }
+
+    public void DisplayResume()
+    {
+        Console.WriteLine($"Resume of {Name}");
+        foreach (var job in Jobs)
+        {
+            job.Display();
+        }
     }
 }
