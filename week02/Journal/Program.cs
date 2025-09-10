@@ -1,29 +1,58 @@
 using System;
+
 class Program
+{
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
-        
-        Job job1 = new Job();
-        job1._jobTitle = "Teacher Assistant";
-        job1._company = "Department of Education";
-        job1._startYear = 2022;
-        job1._endYear = 2024;
+        // Personal Data
+        PersonalData pd = new PersonalData
+        {
+            FullName = "Melinda Respeto",
+            Address = "Manila, Philippines",
+            Age = 25,
+            Email = "melinda.respeto@email.com",
+            Phone = "+63 912 345 6789"
+        };
 
-        Job job2 = new Job();
-        job2._jobTitle = "Quality Assurance";
-        job2._company = "Astec Company";
-        job2._startYear = 2019;
-        job2._endYear = 2020;
+        // Education
+        Education edu1 = new Education
+        {
+            Degree = "Bachelor of Science in Computer Science",
+            School = "University of the Philippines",
+            YearGraduated = 2020
+        };
 
-        List<Job> jobs = new List<Job>();
-        jobs.Add(job1);
-        jobs.Add(job2);
+        // Jobs
+        Job job1 = new Job
+        {
+            JobTitle = "Teacher Assistant",
+            Company = "Department of Education",
+            StartYear = 2022,
+            EndYear = 2024,
+            Description = "Assisted lead teachers in classroom activities, student support, and lesson planning."
+        };
 
-        foreach (Job job in jobs)
-    
+        Job job2 = new Job
+        {
+            JobTitle = "Software Developer",
+            Company = "Tech Solutions Inc.",
+            StartYear = 2020,
+            EndYear = 2022,
+            Description = "Developed and maintained web applications, improved performance, and collaborated with cross-functional teams."
+        };
 
-        {  job.DisplayJobDetails();
-        }
-    
+        // Resume
+        Resume resume = new Resume(pd.FullName);
+        resume.AddEducation(edu1);
+        resume.AddJob(job1);
+        resume.AddJob(job2);
+        resume.AddSkill("C# Programming");
+        resume.AddSkill("Web Development (HTML, CSS, JavaScript)");
+        resume.AddSkill("Database Management");
+        resume.AddSkill("Problem Solving & Critical Thinking");
+
+        // Display Resume
+        pd.DisplayPersonalData();
+        resume.DisplayResume();
     }
+}
