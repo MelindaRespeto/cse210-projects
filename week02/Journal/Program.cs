@@ -54,5 +54,6 @@ class Program
         // Display Resume
         pd.DisplayPersonalData();
         resume.DisplayResume();
+        job.DisplayJob();   // shows job info
     }
 }
