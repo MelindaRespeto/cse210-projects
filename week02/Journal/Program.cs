@@ -7,10 +7,10 @@ class Program
         // Personal Data
         PersonalData pd = new PersonalData
         {
-            FullName = "Melinda Respeto",
+            FullName = "Dayday Ganda",
             Address = "Manila, Philippines",
             Age = 25,
-            Email = "melinda.respeto@email.com",
+            Email = "melinda.ganda@email.com",
             Phone = "+63 912 345 6789"
         };
 
