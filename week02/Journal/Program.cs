@@ -10,7 +10,7 @@ class Program
             FullName = "Dayday Ganda",
             Address = "Manila, Philippines",
             Age = 25,
-            Email = "melinda.ganda@email.com",
+            Email = "dayday.ganda@email.com",
             Phone = "+63 912 345 6789"
         };
 
