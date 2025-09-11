@@ -52,8 +52,8 @@ class Program
         resume.AddSkill("Problem Solving & Critical Thinking");
 
         // Display Resume
-        pd.DisplayPersonalData();
-        resume.DisplayResume();
+        pd.DisplayPersonalData();// shows personal data
+        resume.DisplayResume();// shows resume info
         job.DisplayJob();   // shows job info
     }
 }
