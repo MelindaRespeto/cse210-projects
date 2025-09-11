@@ -2,52 +2,15 @@ using System;
 
 public class Job
 {
-    public string _jobTitle;
-    public string _company;
-    public int _startYear;
-    public int _endYear;
+    public string JobTitle { get; set; }
+    public string Company { get; set; }
+    public int StartYear { get; set; }
+    public int EndYear { get; set; }
+    public string Description { get; set; }
 
-    public Job(string jobTitle, string company, int startYear, int endYear)
+    public void DisplayJob()
     {
-        _jobTitle = jobTitle;
-        _company = company;
-        _startYear = startYear;
-        _endYear = endYear;
-    }
-
-    public void Display()
-    {
-        Console.WriteLine($"{_jobTitle} at {_company} ({_startYear} - {_endYear})");
-    }
-}
-Resume.cs:
-
-csharp
-Copy code
-using System;
-using System.Collections.Generic;
-
-public class Resume
-{
-    public string Name { get; set; }
-    public List<Job> Jobs { get; } = new List<Job>();
-
-    public Resume(string name)
-    {
-        Name = name;
-    }
-
-    public void AddJob(Job job)
-    {
-        Jobs.Add(job);
-    }
-
-    public void DisplayResume()
-    {
-        Console.WriteLine($"Resume of {Name}");
-        foreach (var job in Jobs)
-        {
-            job.Display();
-        }
+        Console.WriteLine($"{JobTitle,-30} {Company,-30} {StartYear}-{EndYear}");
+        Console.WriteLine($"   {Description}");
     }
 }

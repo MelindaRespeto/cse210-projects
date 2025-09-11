@@ -8,8 +8,6 @@ public class Education
 
     public void DisplayEducation()
     {
-        Console.WriteLine($"{Degree,-45} {YearGraduated}");
-        Console.WriteLine($"{School,-45}");
-        Console.WriteLine();
+        Console.WriteLine($"{Degree} - {School} ({YearGraduated})");
     }
 }
