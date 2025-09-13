@@ -2,15 +2,37 @@ using System;
 
 public class Job
 {
-    public string JobTitle { get; set; }
-    public string Company { get; set; }
-    public int StartYear { get; set; }
-    public int EndYear { get; set; }
-    public string Description { get; set; }
+    private string _date;
+    private string _prompt;
+    private string _entryText;
 
-    public void DisplayJob()
+    public Job(string date, string prompt, string entryText)
     {
-        Console.WriteLine($"{JobTitle,-30} {Company,-30} {StartYear}-{EndYear}");
-        Console.WriteLine($"   {Description}");
+        _date = date;
+        _prompt = prompt;
+        _entryText = entryText;
+    }
+
+    public string GetEntryDetails()
+    {
+        return $"{_date} - {_prompt}\n{_entryText}";
+    }
+
+    public string ToFileFormat()
+    {
+        return $"{_date}~{_prompt}~{_entryText}";
+    }
+
+    public static Job FromFileFormat(string line)
+    {
+        string[] parts = line.Split('~');
+        if (parts.Length == 3)
+        {
+            return new Job(parts[0], parts[1], parts[2]);
+        }
+        return null;
     }
 }
+
+
+
