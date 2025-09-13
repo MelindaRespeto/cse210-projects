@@ -1,59 +1,61 @@
 using System;
 
+/// <summary>
+/// Program exceeds requirements by:
+/// 1. Allowing user to choose custom filenames for save/load.
+/// 2. Adding total entry count display.
+/// 3. Automatically records date.
+/// </summary>
 class Program
 {
     static void Main(string[] args)
     {
-        // Personal Data
-        PersonalData pd = new PersonalData
+        ProgramData programData = new ProgramData();
+        bool isRunning = true;
+
+        while (isRunning)
         {
-            FullName = "Dayday Ganda",
-            Address = "Manila, Philippines",
-            Age = 25,
-            Email = "dayday.ganda@email.com",
-            Phone = "+63 912 345 6789"
-        };
+            Console.WriteLine("=== Journal Menu ===");
+            Console.WriteLine("1. Write New Entry");
+            Console.WriteLine("2. Display Entries");
+            Console.WriteLine("3. Save Journal");
+            Console.WriteLine("4. Load Journal");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose an option: ");
 
-        // Education
-        Education edu1 = new Education
-        {
-            Degree = "Bachelor of Science in Computer Science",
-            School = "University of the Philippines",
-            YearGraduated = 2020
-        };
+            string choice = Console.ReadLine();
 
-        // Jobs
-        Job job1 = new Job
-        {
-            JobTitle = "Teacher Assistant",
-            Company = "Department of Education",
-            StartYear = 2022,
-            EndYear = 2024,
-            Description = "Assisted lead teachers in classroom activities, student support, and lesson planning."
-        };
+            switch (choice)
+            {
+                case "1":
+                    programData.AddEntry();
+                    break;
 
-        Job job2 = new Job
-        {
-            JobTitle = "Software Developer",
-            Company = "Tech Solutions Inc.",
-            StartYear = 2020,
-            EndYear = 2022,
-            Description = "Developed and maintained web applications, improved performance, and collaborated with cross-functional teams."
-        };
+                case "2":
+                    programData.DisplayEntries();
+                    break;
 
-        // Resume
-        Resume resume = new Resume(pd.FullName);
-        resume.AddEducation(edu1);
-        resume.AddJob(job1);
-        resume.AddJob(job2);
-        resume.AddSkill("C# Programming");
-        resume.AddSkill("Web Development (HTML, CSS, JavaScript)");
-        resume.AddSkill("Database Management");
-        resume.AddSkill("Problem Solving & Critical Thinking");
+                case "3":
+                    Console.Write("Enter file name to save (e.g., journal.txt): ");
+                    string saveFile = Console.ReadLine();
+                    programData.SaveToFile(saveFile);
+                    break;
 
-        // Display Resume
-        pd.DisplayPersonalData();// shows personal data
-        resume.DisplayResume();// shows resume info
-        job.DisplayJob();   // shows job info
+                case "4":
+                    Console.Write("Enter file name to load (e.g., journal.txt): ");
+                    string loadFile = Console.ReadLine();
+                    programData.LoadFromFile(loadFile);
+                    break;
+
+                case "5":
+                    isRunning = false;
+                    Console.WriteLine("Goodbye!");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid option. Try again.\n");
+                    break;
+            }
+        }
     }
 }
