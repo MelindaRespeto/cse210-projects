@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Fraction frac = new Fraction(8, 12);
+        Fraction frac = new Fraction(10, 14);
 
         Console.Write("Original fraction: ");
         frac.Display();
