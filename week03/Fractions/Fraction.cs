@@ -2,12 +2,23 @@ using System;
 
 public class Fraction
 {
-    // Private attributes
-    private int numerator;   // top number
-    private int denominator; // bottom number
+    private int numerator;
+    private int denominator;
 
-    // Constructor
-    public Fraction(int numerator, int denominator)
+    // Constructors
+    public Fraction() // No-parameter constructor (1/1)
+    {
+        numerator = 1;
+        denominator = 1;
+    }
+
+    public Fraction(int numerator) // One-parameter constructor (numerator/1)
+    {
+        this.numerator = numerator;
+        denominator = 1;
+    }
+
+    public Fraction(int numerator, int denominator) // Two-parameter constructor
     {
         if (denominator == 0)
             throw new ArgumentException("Denominator cannot be zero.");
@@ -16,37 +27,22 @@ public class Fraction
         this.denominator = denominator;
     }
 
-    // Getter and Setter for numerator
-    public int GetNumerator()
-    {
-        return numerator;
-    }
+    // Getters and setters
+    public int GetNumerator() => numerator;
+    public void SetNumerator(int numerator) => this.numerator = numerator;
 
-    public void SetNumerator(int value)
+    public int GetDenominator() => denominator;
+    public void SetDenominator(int denominator)
     {
-        numerator = value;
-    }
-
-    // Getter and Setter for denominator
-    public int GetDenominator()
-    {
-        return denominator;
-    }
-
-    public void SetDenominator(int value)
-    {
-        if (value == 0)
+        if (denominator == 0)
             throw new ArgumentException("Denominator cannot be zero.");
-        denominator = value;
+        this.denominator = denominator;
     }
 
-    // Display the fraction
-    public void Display()
-    {
-        Console.WriteLine($"{numerator}/{denominator}");
-    }
+    // Display fraction
+    public void Display() => Console.WriteLine($"{numerator}/{denominator}");
 
-    // Simplify the fraction
+    // Simplify fraction
     public void Simplify()
     {
         int gcd = GCD(numerator, denominator);
@@ -54,7 +50,13 @@ public class Fraction
         denominator /= gcd;
     }
 
-    // Helper method to calculate GCD
+    // Returns fraction as string (e.g., "3/4")
+    public string GetFractionString() => $"{numerator}/{denominator}";
+
+    // Returns decimal value (e.g., 0.75)
+    public double GetDecimalValue() => (double)numerator / denominator;
+
+    // Greatest common divisor
     private int GCD(int a, int b)
     {
         while (b != 0)
@@ -63,6 +65,7 @@ public class Fraction
             b = a % b;
             a = temp;
         }
-        return a;
+        return Math.Abs(a);
     }
 }
+
