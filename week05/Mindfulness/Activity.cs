@@ -1,70 +1,65 @@
 using System;
 using System.Threading;
 
-public class Activity
+public abstract class Activity
 {
+    // Shared fields
     protected string _name;
     protected string _description;
     protected int _duration;
 
+    // Constructor
     public Activity(string name, string description)
     {
         _name = name;
         _description = description;
     }
 
-    // Starting message
-    public void DisplayStartingMessage()
+    // Common methods
+    public void Start()
     {
         Console.Clear();
-        Console.WriteLine($"--- {_name} ---\n");
+        Console.WriteLine($"Welcome to the {_name}!");
         Console.WriteLine(_description);
-        Console.Write("\nHow long, in seconds, would you like for this activity? ");
+        Console.Write("\nEnter duration in seconds: ");
         _duration = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("\nGet ready to begin...");
-        ShowSpinner(5);
-    }
-
-    // Ending message
-    public void DisplayEndingMessage()
-    {
-        Console.WriteLine("\nWell done!");
+        Console.Clear();
+        Console.WriteLine("Get ready...");
         ShowSpinner(3);
-        Console.WriteLine($"\nYou have completed the {_name} for {_duration} seconds.");
-        ShowSpinner(5);
     }
 
-    // Spinner animation
+    public void End()
+    {
+        Console.WriteLine($"\nWell done! You completed {_duration} seconds of the {_name}.");
+        ShowSpinner(3);
+    }
+
     protected void ShowSpinner(int seconds)
     {
-        string[] spinner = { "|", "/", "-", "\\" };
-        DateTime endTime = DateTime.Now.AddSeconds(seconds);
-        int i = 0;
+        string[] sequence = { "|", "/", "-", "\\" };
+        DateTime end = DateTime.Now.AddSeconds(seconds);
 
-        while (DateTime.Now < endTime)
+        int i = 0;
+        while (DateTime.Now < end)
         {
-            Console.Write(spinner[i % spinner.Length]);
-            Thread.Sleep(250);
-            Console.Write("\b \b");
-            i++;
+            Console.Write(sequence[i]);
+            Thread.Sleep(200);
+            Console.Write("\b \b"); // backspace to clear
+            i = (i + 1) % sequence.Length;
         }
     }
 
-    // Countdown animation
     protected void ShowCountdown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.Write(i + " ");
+            Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b\b  \b\b");
+            Console.Write("\b \b"); // erase number
         }
-        Console.WriteLine();
     }
 
-    public int GetDuration()
-    {
-        return _duration;
-    }
+    // Each derived class implements Run
+    public abstract void Run();
 }
