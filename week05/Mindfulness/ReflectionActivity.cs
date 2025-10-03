@@ -1,51 +1,42 @@
 using System;
-using System.Collections.Generic;
 
-public class ReflectionActivity : Activity
+class Program
 {
-    private List<string> _prompts = new List<string>
+    static void Main(string[] args)
     {
-        "Think of a time when you stood up for someone else.",
-        "Think of a time when you did something really difficult.",
-        "Think of a time when you helped someone in need.",
-        "Think of a time when you did something truly selfless."
-    };
+        bool running = true;
 
-    private List<string> _questions = new List<string>
-    {
-        "Why was this experience meaningful to you?",
-        "Have you ever done anything like this before?",
-        "How did you feel when it was complete?",
-        "What did you learn about yourself through this experience?",
-        "How can you keep this experience in mind in the future?"
-    };
-
-    public ReflectionActivity()
-        : base("Reflection Activity",
-              "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can apply it in other aspects of your life.") { }
-
-    public void Run()
-    {
-        DisplayStartingMessage();
-
-        Random rand = new Random();
-        string prompt = _prompts[rand.Next(_prompts.Count)];
-        Console.WriteLine($"\nConsider the following prompt:\n--- {prompt} ---");
-        Console.WriteLine("\nWhen you have something in mind, press Enter to continue.");
-        Console.ReadLine();
-
-        Console.WriteLine("Now ponder on each of the following questions as they relate to this experience:");
-        ShowSpinner(5);
-
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
-        while (DateTime.Now < endTime)
+        while (running)
         {
-            string question = _questions[rand.Next(_questions.Count)];
-            Console.Write($"> {question} ");
-            ShowSpinner(6);
-            Console.WriteLine();
-        }
+            Console.Clear();
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Listing Activity");
+            Console.WriteLine("3. Reflection Activity");
+            Console.WriteLine("4. Quit");
+            Console.Write("\nSelect a choice from the menu: ");
 
-        DisplayEndingMessage();
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    new BreathingActivity().Run();
+                    break;
+                case "2":
+                    new ListingActivity().Run();
+                    break;
+                case "3":
+                    new ReflectionActivity().Run();
+                    break;
+                case "4":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Try again.");
+                    break;
+            }
+        }
     }
 }
+
